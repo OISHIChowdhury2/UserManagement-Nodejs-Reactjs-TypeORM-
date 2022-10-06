@@ -1,14 +1,14 @@
 import './App.css';
-import HomePage from './component/homepage';
-import Login from './component/login';
-import Reg from './component/reg';
+// import HomePage from './component/homepage';
+ //import Login from './component/Login';
+ import Reg from './component/Reg';
 function App() {
   return (
-    <div className='App'>
-    <HomePage />
-     <Login/>
+   
+    // <HomePage />
+    // <Login/> 
      <Reg/>
-     </div>
+    
   );
 }
 

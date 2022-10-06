@@ -1,48 +1,74 @@
-import React from "react";
+import React, { useState } from "react";
 
-const login=()=>{
+const Login=()=>{
+  const[user, setUser]= useState({
+    email:"",
+    password: ""
+  })
+  const handeleChange = e =>{
+    // console.log(e.target);
+    const {name,value}= e.target;
+
+    setUser({ 
+      ...user,
+      [name]: value
+      })
+    console.log(name,value);
+  }
+
+  const loginInTo = async (e) =>{
+    e.preventDefault();
+    const {email,password} = user
+    if( email && password ){
+    axios.post("http://localhost:3000/login", user)
+    .then( res=> console.log(res));
+    }
+    else {
+      alert("invalid user");
+    }
+  }
+
 return (
   <>
   <h1>Login Form</h1>
- <div class="container">
-  <div class="row">
-    <div class="col">
-<section class=" text-center text-lg-start">
-  <div class="card mb-3">
-    <div class="row g-0 d-flex align-items-center">
-      <div class="col-lg-4 d-none d-lg-flex">
+ <div className="container">
+  <div className="row">
+    <div className="col">
+<section className=" text-center text-lg-start">
+  <div className="card mb-3">
+    <div className="row g-0 d-flex align-items-center">
+      <div className="col-lg-4 d-none d-lg-flex">
         <img src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg" alt="Trendy Pants and Shoes"
-          class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+          className="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
       </div>
-      <div class="col-lg-8">
-        <div class="card-body py-5 px-md-5">
-
+      <div className="col-lg-8">
+        <div className="card-body py-5 px-md-5">
           <form>
-            <div class="form-outline mb-4">
-            <label class="form-label" for="form2Example1">Email address</label>
-            <input type="email" id="form2Example1" class="form-control" />
+            <div className="form-outline mb-4">
+            <label className="form-label"  >Email</label>
+            <input type="email"  className="form-control" name="email" value={user.email} onChange={handeleChange}/>
             </div>
-            <div class="form-outline mb-4">
-            <label class="form-label" for="form2Example2">Password</label>
-            <input type="password" id="form2Example2" class="form-control" />
+            <div className="form-outline mb-4">
+            <label className="form-label" name="password" >Password</label>
+            <input type="password"  className="form-control" name="password" value={user.password} onChange={handeleChange}/>
             </div>
-            <div class="row mb-4">
-              <div class="col d-flex justify-content-center">
+            <div className="row mb-4">
+              <div className="col d-flex justify-content-center">
               </div>
             </div>
-
-            <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
-
+            <button onClick={loginInTo} className="btn btn-primary btn-block mb-4">Sign in</button>
+            <label>OR</label>
+            <button  type="button" className="btn btn-primary btn-block mb-4">Register</button>
           </form>
         </div>
-    </div>  
+      </div>  
     </div>
-    </div>
+   </div>
 </section>
-      </div>
+       </div>
       </div>
     </div>
   </>
 )
 }
-export default login;
+export default Login;
