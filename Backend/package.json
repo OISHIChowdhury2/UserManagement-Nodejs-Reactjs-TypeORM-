@@ -1,0 +1,29 @@
+{
+   "name": "backend",
+   "version": "1.0.0",
+   "main": "index.js",
+   "type": "module",
+   "scripts": {
+      "script": "node serve",
+    "dev": "nodemon serve"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/OISHIChowdhury2/eCoin.git"
+   },
+   "author": "Oishi",
+   "license": "ISC",
+   "bugs": {
+      "url": "https://github.com/OISHIChowdhury2/eCoin/issues"
+   },
+   "homepage": "https://github.com/OISHIChowdhury2/eCoin#readme",
+   "dependencies": {
+      "body-parser": "^1.20.0",
+      "cors": "^2.8.5",
+      "express": "^4.18.1",
+      "g": "^2.0.1",
+      "nodemon": "^2.0.20",
+      "pg": "^8.4.0"
+   }
+
+}
