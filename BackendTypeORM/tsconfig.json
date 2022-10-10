@@ -1,0 +1,31 @@
+{
+   "compilerOptions": {
+      "lib": [
+         "es5",
+         "es6",
+      ],
+      "esModuleInterop": true,
+      "target": "es6",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "outDir": "dist",
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "sourceMap": true,
+      "strict": true, 
+      "rootDir": "./src",
+      "strictPropertyInitialization": false, 
+      "forceConsistentCasingInFileNames": true ,
+   
+    }, 
+    "include": [
+      "./**/*.ts",
+      "src/definitions/**/*.json",
+      "src/modules/tasks"
+    ],
+    "exclude": [
+      "node_modules",
+      "dist",
+      "test"
+    ]
+}

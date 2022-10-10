@@ -1,11 +1,9 @@
-import { Router } from "express";
+const { Router } = require ('express');
 const router = Router();
 
-import { addRegister } from "../Controller/reg";
+const registerContriller = require( "../Controller/regController");
 
-router.post('/register',addRegister);
+router.post('/',registerContriller.handelNewUser)
 
-export default {
-     router
-    };
+module.exports = router;
 

@@ -1,7 +1,7 @@
-const getRegister = "SELECT * FROM  register";
-const getLogin = "SELECT * FROM register";
+const getRegister = "INSERT INTO register (firstName,lastName,email,password,repassword) VALUES($1,$2,$3,$4,$5)";
+const getLogin = "SELECT * FROM  register";
 
-export default {
+module.exports= {
     getRegister,
     getLogin,
-};
+}
