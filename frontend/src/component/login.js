@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-
+import axios from "axios";
+import { useNavigate } from "react-router-dom"
 const Login=()=>{
+  const navigation =useNavigate();
   const[user, setUser]= useState({
     email:"",
     password: ""
@@ -20,13 +22,16 @@ const Login=()=>{
     e.preventDefault();
     const {email,password} = user
     if( email && password ){
-    axios.post("http://localhost:3000/login", user)
-    .then( res=> console.log(res));
+    axios.post("http://localhost:3000/api/login", user)
+    .then( res=> 
+      navigation('/Home'));
     }
     else {
       alert("invalid user");
     }
   }
+
+  
 
 return (
   <>
@@ -58,7 +63,7 @@ return (
             </div>
             <button onClick={loginInTo} className="btn btn-primary btn-block mb-4">Sign in</button>
             <label>OR</label>
-            <button  type="button" className="btn btn-primary btn-block mb-4">Register</button>
+            <button onClick={() => navigation('/signup')} type="button" className="btn btn-primary btn-block mb-4">Register</button>
           </form>
         </div>
       </div>  

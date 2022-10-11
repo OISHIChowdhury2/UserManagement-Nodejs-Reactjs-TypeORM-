@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom"
 const Reg =()=>{
+  const navigation =useNavigate();
   const[user, setUser]= useState({
     firstName:"",
     lastName:"",
     email:"",
     password: "",
-    repassword :""
+    role : ""
   })
   const handeleChange = e =>{
     const {name,value}= e.target;
@@ -18,10 +20,12 @@ const Reg =()=>{
   }
   const register = async (e) =>{
     e.preventDefault();
-    const { firstName,email,password,repassword} = user
-    if(firstName && email && password &&(password === repassword)){
-    axios.post("http://localhost:3000/register", user)
-    .then( res=> console.log(res));
+    const { firstName,email,password,role} = user
+    if(firstName && email && password && role){
+    axios.post("http://localhost:3000/api/register", user)
+    .then( res=>
+      navigation('/')
+      );
     }
     else {
       alert("invalid user");
@@ -73,8 +77,8 @@ return (
             <input type="password"  className="form-control" name="password" value={user.password} onChange={handeleChange} />
           </div>
           <div className="form-outline mb-4">
-          <label className="form-label" >Repassword</label>
-            <input type="password"  className="form-control" name="repassword" value={user.repassword} onChange={handeleChange} />
+          <label className="form-label" >Role</label>
+            <input type="text"  className="form-control" name="role" value={user.role} onChange={handeleChange} />
           </div>
           <button  onClick={register} className="btn btn-primary btn-block mb-4">
             Sign up
