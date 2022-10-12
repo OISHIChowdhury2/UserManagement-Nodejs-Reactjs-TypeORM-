@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import addNotification from 'react-push-notification';
 import { useNavigate } from "react-router-dom"
 const Reg =()=>{
   const navigation =useNavigate();
@@ -18,17 +19,42 @@ const Reg =()=>{
       })
     console.log(name,value);
   }
+  function warningNotification (){
+    addNotification({
+      title: 'Warning',
+      subtitle: 'Please fill it',
+      message: 'You have to enter fill up the form',
+      theme: 'red',
+      closeButton:"X",
+    })
+  };
+  function successNotification (){
+    addNotification({
+      title: 'Success',
+      subtitle: 'You have successfully Registered',
+      message: 'Welcome Home page',
+      theme: 'light',
+      closeButton:"X",
+      backgroundTop:"green",
+      backgroundBottom:"yellowgreen"
+    })
+  };
+
+
+
+
   const register = async (e) =>{
     e.preventDefault();
     const { firstName,email,password,role} = user
     if(firstName && email && password && role){
+      successNotification();
     axios.post("http://localhost:3000/api/register", user)
     .then( res=>
       navigation('/')
       );
     }
     else {
-      alert("invalid user");
+      warningNotification();
     }
   }
 return (
