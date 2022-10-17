@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 
-app.use("/api", userRoutes);
-app.use("/api", userLogin);
+app.use("/reg", userRoutes);
+app.use("/auth", userLogin);
 
 export default app;

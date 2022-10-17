@@ -1,25 +1,27 @@
-import { Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    Unique,
-    CreateDateColumn,
-    UpdateDateColumn,BaseEntity } from "typeorm"
+import { Entity, PrimaryGeneratedColumn,
+    Column,CreateDateColumn,
+    UpdateDateColumn,
+    } from "typeorm";
  import bcrypt from "bcryptjs";
 // import * as bcrypt from "bcryptjs";
-import { IsNotEmpty, isEmpty, isPhoneNumber, Length,Max,MAX } from "class-validator"
+export enum UserStatus {
+  ACTIVE = "A",
+  INACTIVE = "I"
+}
 @Entity()
-@Unique(["password"])
-export class Register extends BaseEntity{
+export class Register {
+
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
+    @Column(
+    )
     firstName: string
 
     @Column()
     lastName: string
 
-    @Column()
+    @Column( {unique: true})
     email: string
 
     @Column()
@@ -28,7 +30,14 @@ export class Register extends BaseEntity{
 
     @Column()
     role: string;
-  
+
+    @Column({
+      type: "enum",
+      enum: UserStatus,
+      default: UserStatus.ACTIVE
+  })
+  status: UserStatus;
+
     @Column()
     @CreateDateColumn()
     createdAt: Date;
@@ -39,9 +48,5 @@ export class Register extends BaseEntity{
 
     hashPassword() {
         this.password = bcrypt.hashSync(this.password, 8);
-      }
-    
-      checkIfUnencryptedPasswordIsValid(unencryptedPassword: string) {
-        return bcrypt.compare(unencryptedPassword, this.password);
       }
 }
