@@ -14,8 +14,7 @@ export class Register {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column(
-    )
+    @Column()
     firstName: string
 
     @Column()

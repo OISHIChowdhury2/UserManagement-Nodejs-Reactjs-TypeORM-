@@ -1,5 +1,5 @@
 import {Router} from "express";
-import {userResister,userAuth,getOneById,deleteUser
+import {userResister,userEdit,userAuth,getOneById,deleteUser
   }from "../controller/registerController";
 import { checkJwt } from "../middlewares/checkJwt";
 import { checkRole } from "../middlewares/checkRole";
@@ -15,8 +15,8 @@ router.get(
 //create user
 router.post("/register",userResister);
 
-// router.put(
-//   "/update/:id",
-//   userEdit
-// );
+router.put(
+  "/update/:id",
+  userEdit
+);
 export default router;

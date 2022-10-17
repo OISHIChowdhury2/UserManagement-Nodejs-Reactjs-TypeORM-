@@ -53,25 +53,25 @@ export const userResister = async(req: Request,res: Response
     console.log(user);
     res.status(201).send("Registed")
 };
-// export const userEdit = async(req: Request,res: Response
-//   ) => {
-//   const {id} = req.params;
-//   const{ firstName,lastName,email,role}= req.body;
-//   const userRepository = AppDataSource.getRepository(Register);
-//  try{
-//   const userEdit =  await userRepository
-//                         .createQueryBuilder()
-//                         .update(Register)
-//                         .set({ firstName :firstName ,lastName: lastName ,email: email,role:role })
-//                         .where("id = :id",{id: id})
-//                         .execute();
-//     res.json(userEdit);
-//  }
-//  catch (e){
-//   res.status(409).send("email already used");
-//   return;
-//  }
-//   }
+export const userEdit = async(req: Request,res: Response
+  ) => {
+  const {id} = req.params;
+  const{ firstName,lastName,email,role}= req.body;
+  const userRepository = AppDataSource.getRepository(Register);
+ try{
+  const userEdit =  await userRepository
+                        .createQueryBuilder()
+                        .update(Register)
+                        .set({ firstName :firstName ,lastName: lastName ,email: email,role:role })
+                        .where("id = :id",{id: id})
+                        .execute();
+    res.json(userEdit);
+ }
+ catch (e){
+  res.status(409).send("email already used");
+  return;
+ }
+  }
 
   export const  deleteUser = async (req: Request, res: Response) => {
 

@@ -6,7 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Profile from './profile';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import edit from '../component/edit';
+import EditUser from '../component/edit';
 function HomePage() {
     
   const [users,setUser] = useState([]);
@@ -44,27 +44,27 @@ function HomePage() {
     <>
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand >React-Bootstrap</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <Nav.Link >Features</Nav.Link>
+            <Nav.Link >Pricing</Nav.Link>
             <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
+              <NavDropdown.Item >Action</NavDropdown.Item>
+              <NavDropdown.Item >
                 Another action
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Item >Something</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
+              <NavDropdown.Item >
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link href="./edit">More deets</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
+            <Nav.Link >More deets</Nav.Link>
+            <Nav.Link eventKey={2}>
               Dank memes
             </Nav.Link>
           </Nav>
@@ -97,7 +97,7 @@ function HomePage() {
         <div className="container">
        <div className="row ">
         <div className="col-2">
-        <Button href="./edit" variant="primary">Edit</Button>
+        <div> <EditUser all = {all}/> </div>
         </div>
         <div className="col-6">
         <Button className='btn btn-danger' onClick={()=>delectUser(all.id)}>Delete</Button>
