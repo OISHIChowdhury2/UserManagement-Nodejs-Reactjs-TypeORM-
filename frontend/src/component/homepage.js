@@ -39,7 +39,6 @@ function HomePage() {
       console.log(err.massage);
     }
   }
-
   return (
     <>
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -63,7 +62,9 @@ function HomePage() {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link >More deets</Nav.Link>
+            <Nav.Link >
+            
+            </Nav.Link>
             <Nav.Link eventKey={2}>
               Dank memes
             </Nav.Link>
@@ -86,9 +87,9 @@ function HomePage() {
        <div className="container">
        <div className="row row-cols-4">
       <div className="col-6">
-      <div>{all.firstName} {all.lastName}</div>
-         <div>{all.email}</div>
-         <div>{all.role}</div>
+      <div><b>Name:</b> {all.firstName} {all.lastName}</div>
+         <div><b>Email:</b> {all.email}</div>
+         <div><b>Role:</b> {all.role}</div>
       </div>
       <div className="col-6">col-4</div>
     </div>

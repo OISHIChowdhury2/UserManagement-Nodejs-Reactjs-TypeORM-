@@ -3,10 +3,10 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import axios from "axios";
 function Profile() {
    
-        axios.get(" http://localhost:3000/reg/all")
-        .then( res=> 
-            console.log(res.data)
-        )
+        // axios.get(" http://localhost:3000/reg/all")
+        // .then( res=> 
+        //     console.log(res.data)
+        // )
 
   return (
     <Card style={{ width: '18rem', position: 'center' }}>

@@ -113,7 +113,6 @@ const Login = () => {
 
   return (
     <>
-      <h1>Login Form</h1>
       <div className="container">
         <div className="row">
           <div className="col">
