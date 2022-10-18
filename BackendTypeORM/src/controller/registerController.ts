@@ -11,26 +11,16 @@ export const userAuth = async(req: Request, res : Response) => {
         select: ["id","firstName","lastName", "email", "role"]
     });
     res.send(users)
+    // res.status(201).json({
+    //   message: 'Show all user Successfully',
+    //   // data: users,
+    // });
 };
-export const getOneById = async (req: Request, res: Response) => {
-    //Get the ID from the url
-     const id: string = req.params.id;
-    //Get the user from database
-    const userRepository =AppDataSource.getRepository(Register);
-    try {
-      const user = await userRepository.findOneOrFail({
-        select: ["id", "email", "role"] 
-      });
-    } catch (error) {
-      res.status(404).send("User not found");
-    }
-  };
+
   
 export const userResister = async(req: Request,res: Response
 ) => {
     const {firstName,lastName,email,password,role}=req.body ;
-   
-   
     const user = new Register();
     user.firstName= firstName;
     user.lastName =lastName;
@@ -51,7 +41,11 @@ export const userResister = async(req: Request,res: Response
         return;
     }
     console.log(user);
-    res.status(201).send("Registed")
+    //  res.status(201).send("Registed")
+    res.status(201).json({
+      message: ' Successfully Registed',
+       data: user,
+    });
 };
 export const userEdit = async(req: Request,res: Response
   ) => {
@@ -71,6 +65,10 @@ export const userEdit = async(req: Request,res: Response
   res.status(409).send("email already used");
   return;
  }
+//  res.status(201).json({
+//   message: ' Successfully Update',
+//    data: userEdit,
+// });
   }
 
   export const  deleteUser = async (req: Request, res: Response) => {

@@ -15,6 +15,7 @@ const EditUser = ({ all }) =>{
                 body : JSON.stringify(body)
             })
             console.log(body);
+            window.location = "/Home";
         }
         catch{
             res.send(401);
